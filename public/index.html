@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MD-BOT // PAIRING TERMINAL</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="grid"></canvas>
+
+  <div class="scanlines"></div>
+
+  <main class="wrap">
+    <header class="hdr">
+      <div class="hdr-line"></div>
+      <h1 class="glitch" data-text="MD-BOT // LINK TERMINAL">MD-BOT // LINK TERMINAL</h1>
+      <div class="hdr-sub">WHATSAPP MULTI-DEVICE :: PAIRING INTERFACE v1.0</div>
+      <div class="hdr-line"></div>
+    </header>
+
+    <section class="panel">
+      <div class="panel-top">
+        <span class="dot" id="statusDot"></span>
+        <span id="statusText">DISCONNECTED</span>
+        <span class="panel-id">SESSION::0x00</span>
+      </div>
+
+      <div class="panel-body">
+
+        <div id="formView" class="view">
+          <label class="field-label" for="phone">TARGET NUMBER <span class="hint">(any format — spaces, +, dashes are fine)</span></label>
+          <input id="phone" class="field" type="tel" inputmode="tel" placeholder="e.g. +1 (555) 123-4567" autocomplete="off" />
+          <button id="connectBtn" class="btn">
+            <span>INITIATE LINK</span>
+          </button>
+          <p class="error" id="errorMsg"></p>
+        </div>
+
+        <div id="pairingView" class="view hidden">
+          <div class="label-small">PAIRING CODE <span class="hint">(tap to copy)</span></div>
+          <div class="code" id="pairingCode" title="Tap to copy">— — — — — — — —</div>
+          <div class="instructions">
+            WhatsApp → Settings → Linked Devices → Link a Device →<br/>
+            "Link with phone number instead" → enter code above
+          </div>
+          <div class="timer-bar"><div class="timer-fill" id="timerFill"></div></div>
+          <div class="timer-note" id="timerNote">refreshing in 30s…</div>
+          <button id="cancelBtn" class="btn ghost">CANCEL</button>
+        </div>
+
+        <div id="connectedView" class="view hidden">
+          <div class="ok-icon">◉</div>
+          <div class="ok-title">LINK ESTABLISHED</div>
+          <div class="ok-msg" id="connectedMsg">Bot is online.</div>
+          <button id="logoutBtn" class="btn ghost danger">TERMINATE SESSION</button>
+        </div>
+
+        <div id="connectingView" class="view hidden">
+          <div class="spinner"></div>
+          <div class="ok-msg">Opening socket…</div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="ftr">
+      <span id="footerMsg">awaiting input…</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
